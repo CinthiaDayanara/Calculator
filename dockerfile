@@ -1,8 +1,8 @@
-# Usa la imagen oficial de Nginx desde Docker Hub
+# Usa una imagen base ligera de Nginx para servir los archivos estáticos
 FROM nginx:alpine
 
-# Copia todos los archivos de tu proyecto dentro del contenedor Nginx
+# Copia los archivos de la aplicación al contenedor
 COPY . /usr/share/nginx/html
 
-# Exponer el puerto 80 para que el contenedor sea accesible
+# Exponer el puerto 80 para acceder a la app
 EXPOSE 80
