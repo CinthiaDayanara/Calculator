@@ -1,8 +1,15 @@
-# Usa una imagen base ligera de Nginx para servir los archivos estáticos
-FROM nginx:alpine
+# Usar Node.js como imagen base
+FROM node:alpine
 
-# Copia los archivos de la aplicación al contenedor
-COPY . /usr/share/nginx/html
+# Instalar http-server globalmente
+RUN npm install -g http-server
 
-# Exponer el puerto 80 para acceder a la app
-EXPOSE 80
+# Crear un directorio para la app y copiar los archivos
+WORKDIR /usr/src/app
+COPY . .
+
+# Exponer el puerto 8080
+EXPOSE 8080
+
+# Comando para iniciar el servidor HTTP
+CMD ["http-server", "-p", "8080"]
